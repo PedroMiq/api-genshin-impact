@@ -7,7 +7,6 @@ async function setupDb() {
         driver: sqlite3.Database
     });
 
-    // 1. Criando as tabelas (Requisito: Relacionamentos/JOINs)
     await db.exec(`
         CREATE TABLE IF NOT EXISTS personagens (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -42,7 +41,6 @@ async function setupDb() {
         console.log("✅ Banco populado com 20 personagens!");
     }
 
-    // 3. Inserindo Artefatos para testar o JOIN
     const countArt = await db.get('SELECT COUNT(*) as total FROM artefatos');
     if (countArt.total === 0) {
         await db.run(`INSERT INTO artefatos (nome_set, status_principal, personagem_id) VALUES 

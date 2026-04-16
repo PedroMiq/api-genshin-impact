@@ -17,12 +17,10 @@ setupDb().then(database => {
 function verifyJWT(req, res, next) {
     const authHeader = req.headers['authorization'];
 
-    // Se não vier o cabeçalho Authorization, já para aqui
     if (!authHeader) {
         return res.status(401).json({ error: 'Token não fornecido (Unauthorized)' });
     }
 
-    // Agora que garantimos que o authHeader existe, fazemos o split
     const token = authHeader && authHeader.split(' ')[1];
 
     jwt.verify(token, SECRET_KEY, (err, decoded) => {
