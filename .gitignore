@@ -1,0 +1,4 @@
+node_modules
+.env
+banco_genshin.sqlite
+package-lock.json
